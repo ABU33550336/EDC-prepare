@@ -1,0 +1,29 @@
+# 编译产物 (CCS)
+Debug/
+Release/
+*/Debug/
+*/Release/
+
+# 对象文件与依赖
+*.o
+*.d
+*.elf
+*.axf
+*.bin
+*.hex
+*.map
+*.lst
+*.su
+
+# IDE 元数据
+.settings/
+*.launch
+.cproject
+.project
+.ccsproject
+.clangd
+
+# 编辑器临时文件
+*~
+*.swp
+*.bak

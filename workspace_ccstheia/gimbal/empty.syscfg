@@ -1,0 +1,39 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ */
+//@cliArgs --device "MSPM0G350X" --package "LQFP-64(PM)" --part "Default"
+//@v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)"
+// @cliArgs --board /ti/boards/LP_MSPM0G3507 --rtos nortos
+
+const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.clockTreeEn = true;
+
+const UART = scripting.addModule("/ti/driverlib/UART", {}, false);
+
+const CMD_UART = UART.addInstance();
+CMD_UART.$name = "CMD_UART";
+CMD_UART.peripheral.$assign = "UART0";
+CMD_UART.targetBaudRate = 115200;
+CMD_UART.enableFIFO = true;
+CMD_UART.peripheral.rxPin.$assign = "PA31";
+CMD_UART.peripheral.txPin.$assign = "PA28";
+
+const MTR1_UART = UART.addInstance();
+MTR1_UART.$name = "MTR1_UART";
+MTR1_UART.peripheral.$assign = "UART1";
+MTR1_UART.targetBaudRate = 115200;
+MTR1_UART.enableFIFO = true;
+MTR1_UART.peripheral.rxPin.$assign = "PA9";
+MTR1_UART.peripheral.txPin.$assign = "PA8";
+
+const MTR2_UART = UART.addInstance();
+MTR2_UART.$name = "MTR2_UART";
+MTR2_UART.peripheral.$assign = "UART3";
+MTR2_UART.targetBaudRate = 115200;
+MTR2_UART.enableFIFO = true;
+MTR2_UART.peripheral.rxPin.$assign = "PA13";
+MTR2_UART.peripheral.txPin.$assign = "PA26";
+
+const Board = scripting.addModule("/ti/driverlib/Board", {}, false);

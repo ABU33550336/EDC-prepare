@@ -1,0 +1,35 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ */
+//@cliArgs --device "MSPM0G350X" --package "LQFP-64(PM)" --part "Default"
+//@v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)"
+// @cliArgs --board /ti/boards/LP_MSPM0G3507 --rtos nortos
+const UART  = scripting.addModule("/ti/driverlib/UART", {}, false);
+const UART0 = UART.addInstance();
+const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.clockTreeEn  = true;
+UART0.$name = "UART_0";
+UART0.peripheral.$assign = "UART0";
+UART0.targetBaudRate = 115200;
+UART0.enableFIFO = true;
+UART0.peripheral.rxPin.$assign = "PB1";
+UART0.peripheral.txPin.$assign = "PB0";
+const CLI_UART = UART.addInstance();
+CLI_UART.$name = "CLI_UART";
+CLI_UART.peripheral.$assign = "UART1";
+CLI_UART.targetBaudRate = 115200;
+CLI_UART.enableFIFO = true;
+CLI_UART.peripheral.rxPin.$assign = "PA9";
+CLI_UART.peripheral.txPin.$assign = "PA8";
+const I2C = scripting.addModule("/ti/driverlib/I2C", {}, false);
+const I2C0 = I2C.addInstance();
+I2C0.$name = "I2C_0";
+I2C0.basicEnableController = true;
+I2C0.peripheral.$assign = "I2C0";
+I2C0.peripheral.sclPin.$assign = "PA1";
+I2C0.peripheral.sdaPin.$assign = "PA0";
+
+const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
+
